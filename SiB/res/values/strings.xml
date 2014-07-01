@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">SiB</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+
+    <!-- side menu -->
+
+    <string name="sib">SiB</string>
+    <string name="vijesti">Vijesti</string>
+    <string name="sport">Sport</string>
+    <string name="lifestyle">Lifestyle</string>
+    <string name="kultura">Kultura</string>
+    <string name="predstavljamo">Predstavljamo</string>
+    <string name="sib_plus">SiB plus</string>
+    <string name="studenti">Studenti</string>
+
+</resources>

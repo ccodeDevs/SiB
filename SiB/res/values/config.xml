@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="url_news">http://www.sib.hr/component/ninjarsssyndicator/?feed_id=1&amp;format=raw</string>
+
+</resources>

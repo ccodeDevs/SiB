@@ -1,0 +1,19 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="ch.nth.astrosegment.splash.activity.SplashAbstractActivity"
+    tools:ignore="UselessLeaf" >
+
+    <View
+        android:id="@+id/ui_hider_anchor"
+        android:layout_width="0dp"
+        android:layout_height="0dp" />
+
+    <FrameLayout
+        android:id="@+id/activity_splash_content_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+    </FrameLayout>
+
+</FrameLayout>

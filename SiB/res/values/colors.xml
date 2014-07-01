@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="dividers_color">#dbdbdb</color>
+
+    <!-- actionbar -->
+    <color name="action_bar_color">#33B5E5</color>
+
+    <!-- grid -->
+    <color name="white_transparent">#AAFFFFFF</color>
+
+    <!-- grid text -->
+    <color name="dark_grey">#545454</color>
+
+</resources>
