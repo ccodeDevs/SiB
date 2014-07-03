@@ -5,7 +5,7 @@ import android.view.MenuItem;
 
 import com.ccode.sib.R;
 import com.ccode.sib.base.activities.BaseActivity;
-import com.ccode.sib.news.fragments.NewsDetailsFragment;
+import com.ccode.sib.news.fragments.NewsDetailsViewPager;
 
 /**
  * Title: CCode SiB <br />
@@ -14,8 +14,6 @@ import com.ccode.sib.news.fragments.NewsDetailsFragment;
  * @author Zoran Veres
  * @version 1.0
  */
-
-// TO DO View Pager
 
 public class NewsDetailsActivity extends BaseActivity {
 
@@ -32,7 +30,7 @@ public class NewsDetailsActivity extends BaseActivity {
 			return;
 		}
 
-		NewsDetailsFragment f = NewsDetailsFragment.newInstance(b);
+		NewsDetailsViewPager f = NewsDetailsViewPager.newInstance(b);
 		getSupportFragmentManager().beginTransaction().add(R.id.fragment_container, f).commit();
 
 	}
@@ -50,17 +48,16 @@ public class NewsDetailsActivity extends BaseActivity {
 
 	@Override
 	protected void initUi() {
-
+		// ok nothing here
 	}
 
 	@Override
 	protected void initListeners() {
-
+		// ok nothing here
 	}
 
 	@Override
 	protected void initData() {
-
+		// ok nothing here
 	}
-
 }
