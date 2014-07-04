@@ -1,5 +1,8 @@
 package com.ccode.sib.news.fragments;
 
+import uk.co.senab.actionbarpulltorefresh.extras.actionbarcompat.PullToRefreshLayout;
+import uk.co.senab.actionbarpulltorefresh.library.ActionBarPullToRefresh;
+import uk.co.senab.actionbarpulltorefresh.library.listeners.OnRefreshListener;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -28,9 +31,10 @@ import com.ccode.sib.volley.VolleyErrorHelper;
  * @version 1.0
  */
 
-// TO DO PullToRefresh, implement OnRefreshListener
+public class NewsGridFragment extends BaseFragment implements OnRefreshListener {
 
-public class NewsGridFragment extends BaseFragment {
+	// Pull to refresh
+	private PullToRefreshLayout mPullToRefreshLayout;
 
 	// UI Widgets
 	private GridView mGridView;
@@ -55,6 +59,9 @@ public class NewsGridFragment extends BaseFragment {
 	@Override
 	public void onViewCreated(View view, Bundle savedInstanceState) {
 		super.onViewCreated(view, savedInstanceState);
+		ViewGroup viewGroup = (ViewGroup) view;
+		mPullToRefreshLayout = new PullToRefreshLayout(viewGroup.getContext());
+		ActionBarPullToRefresh.from(getActivity()).insertLayoutInto(viewGroup).listener(this).setup(mPullToRefreshLayout);
 		initListeners();
 		initData();
 	}
@@ -83,18 +90,26 @@ public class NewsGridFragment extends BaseFragment {
 
 	@Override
 	protected void initData() {
-		NewsDataManager.getInstance(getActivity()).getNews(mNewsLoadedListener, true);
+		refreshData(false);
+	}
+
+	private void refreshData(Boolean forceNetwork) {
+		mPullToRefreshLayout.setRefreshing(true);
+		NewsDataManager.getInstance(getActivity()).getNews(mNewsLoadedListener, forceNetwork);
+
 	}
 
 	private OnNewsLoadedListener mNewsLoadedListener = new OnNewsLoadedListener() {
 
 		@Override
 		public void onResponse(NewsWrapper news) {
+			mPullToRefreshLayout.setRefreshComplete();
 			handleNewsResponse(news);
 		}
 
 		@Override
 		public void onError(VolleyError error) {
+			mPullToRefreshLayout.setRefreshComplete();
 			VolleyErrorHelper.handleErrorWithToast(error, getActivity());
 		}
 	};
@@ -105,6 +120,10 @@ public class NewsGridFragment extends BaseFragment {
 		}
 
 		mGridAdapter.setData(news.getChannel().getNews());
+	}
+
+	public void onRefreshStarted(View view) {
+		refreshData(true);
 	}
 
 	public static BaseFragment newInstance() {
